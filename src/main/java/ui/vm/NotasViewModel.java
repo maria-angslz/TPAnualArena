@@ -74,7 +74,10 @@ public class NotasViewModel {
 	}
 	
 	public void guardarNuevoEstudiante() {
-		estudianteSeleccionado = nuevoEstudiante;		
+		//estudianteSeleccionado = nuevoEstudiante;	
+		estudianteSeleccionado.legajo = nuevoEstudiante.legajo;
+		estudianteSeleccionado.nombreYApellido = nuevoEstudiante.nombreYApellido;
+		estudianteSeleccionado.usuarioGithub = nuevoEstudiante.usuarioGithub;
 	}
 
 }
