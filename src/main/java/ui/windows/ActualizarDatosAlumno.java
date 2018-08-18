@@ -29,33 +29,28 @@ public class ActualizarDatosAlumno extends Dialog<NotasViewModel>{
 		
 		new Label(form).setText("Legajo:");
 		legajo = new TextBox(form);
-		legajo.bindValueToProperty("estudianteSeleccionado.legajo");
+		legajo.bindValueToProperty("nuevoEstudiante.legajo");
 		
 		
 		new Label(form).setText("Nombre y apellido:");
 		nombre = new TextBox(form);
-		nombre.bindValueToProperty("estudianteSeleccionado.nombreYApellido");
+		nombre.bindValueToProperty("nuevoEstudiante.nombreYApellido");
 		
 		new Label(form).setText("Usuario Github");
 		usuario = new TextBox(form);
-		usuario.bindValueToProperty("estudianteSeleccionado.usuarioGithub");
-
+		usuario.bindValueToProperty("nuevoEstudiante.usuarioGithub");
+		
 	}
 	
 	@Override
 	protected void addActions(Panel actions) {
-		//new Button(actions).setCaption("Modificar").onClick(this::modificarCampos);
-		new Button(actions).setCaption("Aceptar").onClick(this::cancel);
+		new Button(actions).setCaption("Guardar").onClick(this::guardarDatosEstudiante);
+		new Button(actions).setCaption("Cancelar").onClick(this::cancel);
 	}
 	
-	/*	
-	protected void modificarCampos() {
-		String nombreModificado = nombre.toString();
-		String legajoModificado = legajo.toString();
-		String usuarioModificado = usuario.toString();
-		
-		this.getModelObject().cargarModificacionesDeEstudiantes(nombreModificado,legajoModificado, usuarioModificado);
+	void guardarDatosEstudiante() {
+		getModelObject().guardarNuevoEstudiante();
+		this.cancel();
 	}
-	*/
 	
 }

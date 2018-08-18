@@ -18,6 +18,11 @@ public class Estudiante {
 		this.asignacionesDeTareas = asignacionesDeTareas;
 	}
 	
+	@Override
+	public String toString() {
+		return nombreYApellido;
+	}
+	
 	public String getNombreYApellido() {
 		return nombreYApellido;
 	}

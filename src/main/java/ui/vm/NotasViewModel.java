@@ -13,11 +13,20 @@ import model.repositories.Repositorios;
 public class NotasViewModel {
 	private List<Estudiante> estudiantes;
 	private Estudiante estudianteSeleccionado;
+	private Estudiante nuevoEstudiante;
 	private List<AsignacionDeTarea> asignacionesDeTareas = new ArrayList<AsignacionDeTarea>();
 	private AsignacionDeTarea asignacionSeleccionada;
 
 	public NotasViewModel() {
 		estudiantes = Repositorios.estudiantes.get();
+	}
+	
+	public Estudiante getNuevoEstudiante() {
+		return nuevoEstudiante;
+	}
+
+	public void setNuevoEstudiante(Estudiante nuevoEstudiante) {
+		this.nuevoEstudiante = nuevoEstudiante;
 	}
 
 	public Estudiante getestudianteSeleccionado() {
@@ -58,6 +67,14 @@ public class NotasViewModel {
 
 	public void setAsignacionSeleccionada(AsignacionDeTarea asignacionSeleccionada) {
 		this.asignacionSeleccionada = asignacionSeleccionada;
+	}
+	
+	public void crearNuevoEstudiante() {
+		nuevoEstudiante = new Estudiante(estudianteSeleccionado.nombreYApellido, estudianteSeleccionado.legajo,estudianteSeleccionado.usuarioGithub,estudianteSeleccionado.asignacionesDeTareas);		
+	}
+	
+	public void guardarNuevoEstudiante() {
+		estudianteSeleccionado = nuevoEstudiante;		
 	}
 
 }

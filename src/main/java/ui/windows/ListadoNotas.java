@@ -37,19 +37,12 @@ public class ListadoNotas extends SimpleWindow<NotasViewModel> {
 		selectorEstudiantes.bindItemsToProperty("estudiantes");
 		selectorEstudiantes.bindValueToProperty("estudianteSeleccionado");
 		
-		//selectorEstudiantes.onSelection(getModelObject()::cargarAsignacionesDeTareas);
-		
 		Table<AsignacionDeTarea> tablaNotas = new Table<AsignacionDeTarea>(mainPanel, AsignacionDeTarea.class);
 		tablaNotas.bindItemsToProperty("asignacionesDeTareas");
 		tablaNotas.bindValueToProperty("asignacionSeleccionada");
 		tablaNotas.setNumberVisibleRows(10);
 		tablaNotas.setHeight(1000);
 		tablaNotas.setWidth(1000);
-		
-		/*Column<AsignacionDeTarea> columnaTareaAsignada = new Column<AsignacionDeTarea>(tablaNotas);
-		columnaTareaAsignada.setTitle("Tarea asignada");
-		columnaTareaAsignada.setFixedSize(100);
-		columnaTareaAsignada.bindContentsToProperty("nota");*/
 		
 		new Column<AsignacionDeTarea>(tablaNotas).setTitle("Tarea asignada").bindContentsToProperty("nombreTarea");
 		new Column<AsignacionDeTarea>(tablaNotas).setTitle("Nota").bindContentsToProperty("nota");
@@ -58,6 +51,7 @@ public class ListadoNotas extends SimpleWindow<NotasViewModel> {
 	
 	
 	public void AbrirActualizarDatos() {
+		getModelObject().crearNuevoEstudiante();
 		Dialog<?> dialog = new ActualizarDatosAlumno(this, getModelObject());
 		dialog.open();
 	}
