@@ -112,4 +112,19 @@
   <classpathentry kind="var" path="M2_REPO/org/eclipse/org.eclipse.swt/3.4.2.v3452b/org.eclipse.swt-3.4.2.v3452b.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/eclipse/ui/org.eclipse.ui.workbench/3.4.2.M20090127-1700/org.eclipse.ui.workbench-3.4.2.M20090127-1700.jar" sourcepath="M2_REPO/org/eclipse/ui/org.eclipse.ui.workbench/3.4.2.M20090127-1700/org.eclipse.ui.workbench-3.4.2.M20090127-1700-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/eclipse/swt/win32/org.eclipse.swt.win32.win32.x86_64/3.4.1.v3449c/org.eclipse.swt.win32.win32.x86_64-3.4.1.v3449c.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/sun/jersey/jersey-client/1.8/jersey-client-1.8.jar" sourcepath="M2_REPO/com/sun/jersey/jersey-client/1.8/jersey-client-1.8-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/C:/Users/Leandro/.m2/repository/com/sun/jersey/jersey-client/1.8/jersey-client-1.8-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/com/sun/jersey/jersey-core/1.8/jersey-core-1.8.jar" sourcepath="M2_REPO/com/sun/jersey/jersey-core/1.8/jersey-core-1.8-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/C:/Users/Leandro/.m2/repository/com/sun/jersey/jersey-core/1.8/jersey-core-1.8-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/com/google/code/gson/gson/2.8.5/gson-2.8.5.jar" sourcepath="M2_REPO/com/google/code/gson/gson/2.8.5/gson-2.8.5-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/C:/Users/Leandro/.m2/repository/com/google/code/gson/gson/2.8.5/gson-2.8.5-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
 </classpath>

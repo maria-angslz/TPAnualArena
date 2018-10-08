@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.uqbar.commons.utils.Observable;
 
+import RequestService.RequestService;
 import model.AsignacionDeTarea;
 import model.Estudiante;
 import model.repositories.Repositorios;
@@ -78,6 +79,10 @@ public class NotasViewModel {
 		estudianteSeleccionado.legajo = nuevoEstudiante.legajo;
 		estudianteSeleccionado.nombreYApellido = nuevoEstudiante.nombreYApellido;
 		estudianteSeleccionado.usuarioGithub = nuevoEstudiante.usuarioGithub;
+		
+		//Realizo el Request al server para actualizarlo tambien en la APIREST
+		RequestService request = new RequestService();
+		request.actualizar(estudianteSeleccionado);
 	}
 
 }

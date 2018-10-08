@@ -1,7 +1,7 @@
 package main;
 import org.uqbar.arena.windows.Window;
 
-import model.Fixture;
+import model.Inicializacion;
 
 import org.uqbar.arena.Application;
 
@@ -11,7 +11,7 @@ import ui.windows.ListadoNotas;
 public class LectorNotasApplication extends Application{
 
 	public static void main(String[] args) {
-		Fixture.initialize();
+		Inicializacion.initialize();
 		new LectorNotasApplication().start();
 	}
 	

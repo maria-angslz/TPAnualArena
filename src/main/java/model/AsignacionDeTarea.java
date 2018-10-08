@@ -64,6 +64,11 @@ public class AsignacionDeTarea {
 	}
 	
 	String nota() {
-		return calificaciones.get(calificaciones.size() - 1).nota();
+		if(calificaciones.size() == 0) {
+			return "Sin Calificacion";
+		}
+		else {
+			return calificaciones.get(calificaciones.size() - 1).nota();
+		}
 	}
 }

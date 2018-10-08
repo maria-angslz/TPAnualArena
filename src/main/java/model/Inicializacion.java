@@ -1,13 +1,16 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.sun.jersey.api.client.ClientResponse;
 
+import RequestService.RequestService;
+import main.Decodificador;
 import model.repositories.Repositorios;
 
-public class Fixture {
+public class Inicializacion {
 	
 	public static void initialize() {
+		//Obtencion Alumnos De Memoria
+		/*
 		CalificacionConceptual concepMB = new CalificacionConceptual("MB");
 		CalificacionNumerica numSeis = new CalificacionNumerica(6);
 		
@@ -34,7 +37,22 @@ public class Fixture {
 		
 		Repositorios.estudiantes.agregar(maria);
 		Repositorios.estudiantes.agregar(lean);
+		*/
 		
+		//Obtener estudiante
+		RequestService request = new RequestService();
+		ClientResponse respuesta = request.obtenerEstudiante();
+		String outputEstudiante = respuesta.getEntity(String.class);
+		
+		//Obtener Asignaciones
+		respuesta = request.obtenerAsignaciones();
+		String outputAsignaciones = respuesta.getEntity(String.class);
+		
+		//Decodificar de JSON a Estudiante
+		Decodificador deco = new Decodificador();
+		Estudiante estudiantito = deco.estudiante(outputEstudiante, outputAsignaciones);
+		
+		Repositorios.estudiantes.agregar(estudiantito);
 	}
 
 }
