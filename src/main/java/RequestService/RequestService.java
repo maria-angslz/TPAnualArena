@@ -11,7 +11,7 @@ import javax.ws.rs.core.MediaType;
 
 public class RequestService {
     private Client client;
-    private final String token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIxMTEyMjIzMzMiLCJybmQiOiJ5SXNmZFIwN2lIR3BRRmVjYU9KT2VRPT0ifQ.9pVJGUXhrJPQ-TptNCt971l0h_1dWqWgMrHAWXJchho";
+    private final String token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoxfQ.GDCk-9yZwlADFew9jI551Izq9Dj3SYsCfEL5qcUZYlM";
 
     //Inicializacion del cliente.
     
@@ -20,7 +20,7 @@ public class RequestService {
     }
     
     public ClientResponse obtenerEstudiante() {
-    	WebResource webResource = client.resource("http://notitas.herokuapp.com/student");
+    	WebResource webResource = client.resource("http://localhost:9000/student");
     	ClientResponse response = webResource.header("Authorization", "Bearer " + token)
 				 .accept(MediaType.APPLICATION_JSON).get(ClientResponse.class);
     	
@@ -28,7 +28,7 @@ public class RequestService {
     }
     
     public ClientResponse obtenerAsignaciones() {
-    	WebResource webResource = client.resource("http://notitas.herokuapp.com/student/assignments");
+    	WebResource webResource = client.resource("http://localhost:9000/student/assignments");
     	ClientResponse response = webResource.header("Authorization", "Bearer " + token)
 				 .accept(MediaType.APPLICATION_JSON).get(ClientResponse.class);
     	
@@ -47,7 +47,7 @@ public class RequestService {
 
     	String body = jsonEstudianteNuevo.toString();
     	
-    	WebResource webResource = client.resource("http://notitas.herokuapp.com/student");
+    	WebResource webResource = client.resource("http://localhost:9000/student");
     	ClientResponse response = webResource.header("Authorization", "Bearer " + token)
     			 .accept(MediaType.APPLICATION_JSON).put(ClientResponse.class, body); 
     	
