@@ -1,13 +1,13 @@
 package model.repositories;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 import model.Estudiante;
 
 public class RepoEstudiantes {
-	protected List<Estudiante> lista = new LinkedList<>();
-	/*
+	protected List<Estudiante> lista = new ArrayList<>();
+	
 	private static RepoEstudiantes instancia;
 
 	public static RepoEstudiantes getInstance() {
@@ -16,7 +16,7 @@ public class RepoEstudiantes {
 		}
 		return instancia;
 	}
-	*/
+	
 	public List<Estudiante> get() {
 		return lista;
 	}

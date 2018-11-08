@@ -8,7 +8,7 @@ import org.uqbar.commons.utils.Observable;
 import RequestService.RequestService;
 import model.AsignacionDeTarea;
 import model.Estudiante;
-import model.repositories.Repositorios;
+import model.repositories.RepoEstudiantes;
 
 @Observable
 public class NotasViewModel {
@@ -19,7 +19,7 @@ public class NotasViewModel {
 	private AsignacionDeTarea asignacionSeleccionada;
 
 	public NotasViewModel() {
-		estudiantes = Repositorios.estudiantes.get();
+		estudiantes = RepoEstudiantes.getInstance().get();
 	}
 	
 	public Estudiante getNuevoEstudiante() {
@@ -74,15 +74,14 @@ public class NotasViewModel {
 		nuevoEstudiante = new Estudiante(estudianteSeleccionado.nombreYApellido, estudianteSeleccionado.legajo,estudianteSeleccionado.usuarioGithub,estudianteSeleccionado.asignacionesDeTareas);		
 	}
 	
-	public void guardarNuevoEstudiante() {
-		//estudianteSeleccionado = nuevoEstudiante;	
+	public void guardarNuevoEstudiante() {		
 		estudianteSeleccionado.legajo = nuevoEstudiante.legajo;
 		estudianteSeleccionado.nombreYApellido = nuevoEstudiante.nombreYApellido;
 		estudianteSeleccionado.usuarioGithub = nuevoEstudiante.usuarioGithub;
 		
 		//Realizo el Request al server para actualizarlo tambien en la APIREST
 		RequestService request = new RequestService();
-		request.actualizar(estudianteSeleccionado);
+		request.actualizar(nuevoEstudiante);
 	}
 
 }
