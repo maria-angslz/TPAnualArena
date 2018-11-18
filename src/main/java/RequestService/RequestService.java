@@ -1,5 +1,5 @@
 package RequestService;
-import com.google.gson.JsonObject;
+import com.google.gson.Gson;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
@@ -36,16 +36,8 @@ public class RequestService {
     }
     
     public void actualizar(Estudiante estudianteAActualizar) {
-    	
-    	String[] nombreEstudiante = estudianteAActualizar.getNombreYApellido().split(" ");
-    	
-    	JsonObject jsonEstudianteNuevo = new JsonObject();
-    	jsonEstudianteNuevo.addProperty("code", estudianteAActualizar.getLegajo());
-    	jsonEstudianteNuevo.addProperty("first_name", nombreEstudiante[0]);
-    	jsonEstudianteNuevo.addProperty("last_name", nombreEstudiante[1]);
-    	jsonEstudianteNuevo.addProperty("github_user", estudianteAActualizar.getUsuarioGithub());
-
-    	String body = jsonEstudianteNuevo.toString();
+    	Gson gson = new Gson();
+    	String body = gson.toJson(estudianteAActualizar);
     	
     	WebResource webResource = client.resource("http://localhost:9000/student");
     	ClientResponse response = webResource.header("Authorization", "Bearer " + token)
@@ -53,7 +45,7 @@ public class RequestService {
     	
 
     	String output = response.getEntity(String.class);
-        System.out.println(output);
+        System.out.println("Estudiante modificado: " + output);
 
     }
 }

@@ -5,14 +5,13 @@ import java.util.List;
 
 import model.Estudiante;
 
-public class RepoEstudiantes {
+public class RepoEstudiantesLocal {
 	protected List<Estudiante> lista = new ArrayList<>();
-	
-	private static RepoEstudiantes instancia;
+	private static RepoEstudiantesLocal instancia;
 
-	public static RepoEstudiantes getInstance() {
+	public static RepoEstudiantesLocal getInstance() {
 		if (instancia == null) {
-			instancia = new RepoEstudiantes();
+			instancia = new RepoEstudiantesLocal();
 		}
 		return instancia;
 	}

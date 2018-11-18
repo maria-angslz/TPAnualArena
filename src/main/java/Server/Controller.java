@@ -1,8 +1,8 @@
 package Server;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+import com.google.gson.Gson;
 
+import model.Estudiante;
 import spark.Request;
 import spark.Response;
 import spark.Spark;
@@ -13,31 +13,30 @@ public class Controller {
 	public static String actualizarEstudiante(Request req, Response res) {
 		autenticacion(req);
 		
-		JsonObject jsonObject = new JsonParser().parse(req.body()).getAsJsonObject();
+		Gson gson = new Gson();
+		Estudiante estudianteModificado = gson.fromJson(req.body(), Estudiante.class);
 		
-		String nombre = jsonObject.get("first_name").getAsString(); 
-		String apellido = jsonObject.get("last_name").getAsString();
-		String legajo = jsonObject.get("code").getAsString();
-		String usuario = jsonObject.get("github_user").getAsString(); 
+		Estudiante unEstudiante = gson.fromJson(Inicializacion.estudiante, Estudiante.class);	
 		
-		Inicializacion.estudiante.addProperty("first_name", nombre);
-		Inicializacion.estudiante.addProperty("last_name", apellido);
-		Inicializacion.estudiante.addProperty("code", legajo);
-		Inicializacion.estudiante.addProperty("github_user", usuario);
+		unEstudiante.setLegajo(estudianteModificado.getLegajo());
+		unEstudiante.setNombreYApellido(estudianteModificado.getNombreYApellido());
+		unEstudiante.setUsuarioGithub(estudianteModificado.getUsuarioGithub());
 		
-		return "Estudiante modificado con exito!";
+		Inicializacion.setEstudiante(req.body());
+		
+		return gson.toJson(unEstudiante);
 	}
 	
 	public static String datosEstudiante(Request req, Response res) {
 		autenticacion(req);
 		
-		return Inicializacion.estudiante.toString();
+		return Inicializacion.estudiante;
 	}
 	
 	public static String asignacionesEstudiante(Request req, Response res) {
 		autenticacion(req);
 		
-		return Inicializacion.asignaciones.toString();
+		return Inicializacion.asignaciones;
 	}
 	
 	public static void autenticacion(Request req) {

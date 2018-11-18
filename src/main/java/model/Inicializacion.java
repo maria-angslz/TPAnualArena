@@ -4,7 +4,7 @@ import com.sun.jersey.api.client.ClientResponse;
 
 import RequestService.RequestService;
 import main.Decodificador;
-import model.repositories.RepoEstudiantes;
+import model.repositories.RepoEstudiantesLocal;
 
 public class Inicializacion {
 	
@@ -23,7 +23,7 @@ public class Inicializacion {
 		Decodificador deco = new Decodificador();
 		Estudiante estudiantito = deco.estudiante(outputEstudiante, outputAsignaciones);
 		
-		RepoEstudiantes.getInstance().agregar(estudiantito);
+		RepoEstudiantesLocal.getInstance().agregar(estudiantito);
 	}
 
 }

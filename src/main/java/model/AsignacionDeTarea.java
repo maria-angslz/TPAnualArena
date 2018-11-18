@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.uqbar.commons.utils.Observable;
@@ -16,6 +17,14 @@ public class AsignacionDeTarea {
 		nombreTarea = unNombreTarea;
 		tipoDeCalificacion = TipoCalif;
 		calificaciones = listaCalif;
+		nota = nota();
+		aprobada = valorAprobacion();
+	}
+	
+	public AsignacionDeTarea(String unNombreTarea, TipoCalificacion TipoCalif) {
+		nombreTarea = unNombreTarea;
+		tipoDeCalificacion = TipoCalif;
+		calificaciones = new ArrayList<Calificacion>();
 		nota = nota();
 		aprobada = valorAprobacion();
 	}

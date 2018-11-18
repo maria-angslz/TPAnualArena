@@ -8,7 +8,7 @@ import org.uqbar.commons.utils.Observable;
 import RequestService.RequestService;
 import model.AsignacionDeTarea;
 import model.Estudiante;
-import model.repositories.RepoEstudiantes;
+import model.repositories.RepoEstudiantesLocal;
 
 @Observable
 public class NotasViewModel {
@@ -19,7 +19,7 @@ public class NotasViewModel {
 	private AsignacionDeTarea asignacionSeleccionada;
 
 	public NotasViewModel() {
-		estudiantes = RepoEstudiantes.getInstance().get();
+		estudiantes = RepoEstudiantesLocal.getInstance().get();
 	}
 	
 	public Estudiante getNuevoEstudiante() {

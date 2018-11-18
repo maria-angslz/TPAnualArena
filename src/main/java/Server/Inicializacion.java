@@ -1,39 +1,38 @@
 package Server;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.google.gson.Gson;
+
+import model.Estudiante;
+import model.TipoCalificacion;
+import model.AsignacionDeTarea;
 
 public class Inicializacion {
-	
-	static JsonObject estudiante = new JsonObject();
-	static JsonObject asignaciones = new JsonObject();
+	static String estudiante;
+	static String asignaciones;
 	
 	public static void initialize() {
-		generarAsignaciones();
-		generarEstudiante();
+		//Creacion de asignaciones
+		
+		AsignacionDeTarea tareaConceptual = new AsignacionDeTarea("TareaClase", TipoCalificacion.CONCEPTUAL);
+ 		AsignacionDeTarea tareaNumerica = new AsignacionDeTarea("Parcial", TipoCalificacion.NUMERICA);
+ 		
+ 		List<AsignacionDeTarea> tareasLean = new ArrayList<AsignacionDeTarea>();
+ 		tareasLean.add(tareaConceptual);
+ 		tareasLean.add(tareaNumerica);
+ 		tareasLean.add(tareaConceptual);
+ 		
+ 		//aca paso estudiante sin lista de asignaciones
+ 		Estudiante unEstudiante = new Estudiante("Leandro Ventura", 2345, "lventura", new ArrayList<AsignacionDeTarea>());
+		
+		Gson gson = new Gson();
+		estudiante = gson.toJson(unEstudiante);
+		asignaciones = gson.toJson(tareasLean);
 	}
 	
-	public static void generarEstudiante() {
-		estudiante.addProperty("code", 123456);
-		estudiante.addProperty("first_name", "Leandro");
-		estudiante.addProperty("last_name", "Ventura");
-		estudiante.addProperty("github_user", "leandroventura");
+	public static void setEstudiante(String unEstudiante) {
+		estudiante = unEstudiante;
 	}
-	
-	public static void generarAsignaciones() {
-		JsonArray grades = new JsonArray();
-		
-		JsonObject assignment1 = new JsonObject();
-		assignment1.addProperty("id", 1);
-		assignment1.addProperty("title", "Primer Parcial");
-		assignment1.addProperty("Description", "Descripcion");
-		assignment1.add("grades", grades);
-		
-		JsonArray assignments = new JsonArray();
-		assignments.add(assignment1);
-		assignments.add(assignment1);
-		
-		asignaciones.add("assignments", assignments);
-	}
-
 }
